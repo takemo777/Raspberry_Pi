@@ -6,6 +6,8 @@ from threading import Thread, Event
 from PIL import Image, ImageTk
 import threading, queue
 
+"""停止ボタンを押したら少し待つこと"""
+
 # カメラの起動を監視するクラス
 class VideoCaptureDaemon (threading.Thread):
    def __init__ (self, video, result_queue):
