@@ -1,10 +1,12 @@
+# カメラ映像からリアルタイムで人の顔を探し出して、四角で囲むプログラムを作成してください。
+
 import imutils
 import numpy as np
 import cv2
 import tkinter as tk
 from PIL import Image, ImageTk
 
-"""カレントディレクトリ: cd 実習課題\RaspberryPi400で顔認証装置を作る"""
+"""カレントディレクトリ: cd RaspberryPi400で顔認証装置を作る"""
 
 # 顔検出ループを停止する関数
 def stop_detection():
