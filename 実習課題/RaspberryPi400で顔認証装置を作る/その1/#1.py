@@ -4,7 +4,7 @@ import cv2
 import tkinter as tk
 from PIL import Image, ImageTk
 
-"カレントディレクトリ: cd 実習課題\RaspberryPi400で顔認証装置を作る"
+"""カレントディレクトリ: cd 実習課題\RaspberryPi400で顔認証装置を作る"""
 
 # 顔検出ループを停止する関数
 def stop_detection():
