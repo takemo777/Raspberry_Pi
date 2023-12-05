@@ -3,12 +3,15 @@ import cv2
 import tkinter as tk
 from tkinter import simpledialog
 
+# 実行出来ないときは(cd RaspberryPi400で監視カメラを作る)
+
 def save_image():
     filename = simpledialog.askstring("Input", "画像ファイル名を入力してください（拡張子を含む）", parent=root)
 
     if filename:
         ret, frame = cap.read()
-        cv2.imwrite(filename, frame)
+        # パスの指定を正確に
+        cv2.imwrite("img/" + filename, frame)
         print(f"画像が {filename} として保存されました。")
         # ウェブカメラを解放
         cap.release()

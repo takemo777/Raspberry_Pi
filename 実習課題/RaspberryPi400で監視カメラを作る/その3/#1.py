@@ -3,6 +3,8 @@ import cv2
 import numpy as np
 import time
 
+# 実行出来ないときは(cd RaspberryPi400で監視カメラを作る)
+
 def main():
     cap = cv2.VideoCapture(0)
 
@@ -12,7 +14,8 @@ def main():
     fps = 20.0
     # サイズ設定
     size = (640, 360)
-    writer = cv2.VideoWriter("test.mp4", fmt, fps, size)
+    # パスの指定を正確に
+    writer = cv2.VideoWriter("img/test.mp4", fmt, fps, size)
 
     start_time = time.time()
     # 5秒間起動する
