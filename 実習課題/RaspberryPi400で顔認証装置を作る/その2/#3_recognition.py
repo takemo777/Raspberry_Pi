@@ -1,12 +1,10 @@
-"""顔を認識しない場合、カメラに顔を近づけたり遠ざけたりしてみる"""
-
 import cv2
 import numpy as np
 import tkinter as tk
 from PIL import Image, ImageTk
 
 # LBPHフェイスリコグナイザーを作成して訓練済みモデルを読み込む
-recognizer = cv2.face.LBPHFaceRecognizer_create()
+recognizer = cv2.face_LBPHFaceRecognizer.create()
 recognizer.read("trainer/trainer.yml")
 
 # 顔検出用のカスケード分類器を読み込む
@@ -19,7 +17,8 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 id = 0
 
 # IDに関連付けられた名前のリスト
-names = ["None", "takemo", "kenta", "noriyuki", "menko", "paya"]
+# 自分で設定したID(添字)に手動で名前を入れる
+names = ["None", "takemo", "kishida", "suga", "obama", ""]
 
 class FaceRecognitionApp:
     def __init__(self, root, window_title):
@@ -63,42 +62,42 @@ class FaceRecognitionApp:
                 minSize=(int(0.1 * self.vid.get(3)), int(0.1 * self.vid.get(4))),
             )
 
-            # 検出された顔に枠と予測結果を描画
+            # 検出された顔に予測結果を描画
             for (x, y, w, h) in faces:
-                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-
                 # 顔の領域を切り取り、予測を行う
                 id, confidence = recognizer.predict(
                     cv2.cvtColor(frame[y : y + h, x : x + w], cv2.COLOR_BGR2GRAY)
                 )
 
-                # 信頼度が100未満の場合は正確な一致
-                if confidence < 100:
+                # 信頼度が60未満の場合は正確な一致
+                if confidence < 60:
                     id = names[id]
                     confidence = "  {0}%".format(round(100 - confidence))
+                    # 予測結果を描画
+                    cv2.putText(
+                        frame,
+                        str(id),
+                        (x + 5, y - 5),
+                        font,
+                        1,
+                        (255, 255, 255),
+                        2,
+                    )
+                    cv2.putText(
+                        frame,
+                        str(confidence),
+                        (x + 5, y + h - 5),
+                        font,
+                        1,
+                        (255, 255, 0),
+                        1,
+                    )
                 else:
                     id = "unknown"
-                    confidence = "  {0}%".format(round(100 - confidence))
+                    confidence = ""
 
-                # 予測結果を描画
-                cv2.putText(
-                    frame,
-                    str(id),
-                    (x + 5, y - 5),
-                    font,
-                    1,
-                    (255, 255, 255),
-                    2,
-                )
-                cv2.putText(
-                    frame,
-                    str(confidence),
-                    (x + 5, y + h - 5),
-                    font,
-                    1,
-                    (255, 255, 0),
-                    1,
-                )
+                if id != "unknown":  # "unknown"の場合は枠を描画しない
+                    cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
             # PIL ImageTkに変換してCanvasに表示
             self.photo = ImageTk.PhotoImage(image=Image.fromarray(frame))
