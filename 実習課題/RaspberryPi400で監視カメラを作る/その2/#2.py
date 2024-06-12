@@ -1,22 +1,22 @@
-# 2.ƒvƒƒOƒ‰ƒ€‚ğ‹N“®‚·‚é–ˆ‚Éƒtƒ@ƒCƒ‹–¼‚ª•Ï‚í‚èA‰ß‹‚Ìƒtƒ@ƒCƒ‹‚àc‚·‚±‚Æ‚ª‚Å‚«‚éƒvƒƒOƒ‰ƒ€‚ğì¬‚·‚é
+# 2.ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’èµ·å‹•ã™ã‚‹æ¯ã«ãƒ•ã‚¡ã‚¤ãƒ«åãŒå¤‰ã‚ã‚Šã€éå»ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚‚æ®‹ã™ã“ã¨ãŒã§ãã‚‹ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’ä½œæˆã™ã‚‹
 import cv2
 import datetime
 
-# Àso—ˆ‚È‚¢‚Æ‚«‚Í(cd RaspberryPi400‚ÅŠÄ‹ƒJƒƒ‰‚ğì‚é)
+# å®Ÿè¡Œå‡ºæ¥ãªã„ã¨ãã¯(cd RaspberryPi400ã§ç›£è¦–ã‚«ãƒ¡ãƒ©ã‚’ä½œã‚‹)
 
 def main():
-    # Œ»İ‚Ì“ú‚ğæ“¾
+    # ç¾åœ¨ã®æ—¥æ™‚ã‚’å–å¾—
     now = datetime.datetime.now()
 
-    # ƒtƒ@ƒCƒ‹–¼‚ğì¬
-    # ƒpƒX‚Ìw’è‚ğ³Šm‚É
+    # ãƒ•ã‚¡ã‚¤ãƒ«åã‚’ä½œæˆ
+    # ãƒ‘ã‚¹ã®æŒ‡å®šã‚’æ­£ç¢ºã«
     filename = f"img/{now:%Y%m%d%H%M%S}.jpg"
 
-    # ƒJƒƒ‰‚©‚çæ“¾
+    # ã‚«ãƒ¡ãƒ©ã‹ã‚‰å–å¾—
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
 
-    # •Û‘¶
+    # ä¿å­˜
     cv2.imwrite(filename, frame)
 
     cap.release()
@@ -24,17 +24,17 @@ def main():
 if __name__ == "__main__":
     main()
 def main():
-    # Œ»İ‚Ì“ú‚ğæ“¾
+    # ç¾åœ¨ã®æ—¥æ™‚ã‚’å–å¾—
     now = datetime.datetime.now()
 
-    # ƒtƒ@ƒCƒ‹–¼‚ğì¬
+    # ãƒ•ã‚¡ã‚¤ãƒ«åã‚’ä½œæˆ
     filename = f"{now:%Y%m%d%H%M%S}.jpg"
 
-    # ƒJƒƒ‰‚©‚çæ“¾
+    # ã‚«ãƒ¡ãƒ©ã‹ã‚‰å–å¾—
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
 
-    # •Û‘¶
+    # ä¿å­˜
     cv2.imwrite(filename, frame)
 
     cap.release()

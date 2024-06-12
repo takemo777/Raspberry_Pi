@@ -1,10 +1,10 @@
-# 1.ƒvƒƒOƒ‰ƒ€‚ð‹N“®‚·‚é‚ÆRaspberryPi400 ‚ÉAƒJƒƒ‰‰f‘œ‚ðÃŽ~‰æ‚Æ‚µ‚Ä•Û‘¶‚·‚é‚¾‚¯‚Ì’Pƒ‚ÈƒvƒƒOƒ‰ƒ€‚ðì¬‚·‚é
+# 1.ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’èµ·å‹•ã™ã‚‹ã¨RaspberryPi400 ã«ã€ã‚«ãƒ¡ãƒ©æ˜ åƒã‚’é™æ­¢ç”»ã¨ã—ã¦ä¿å­˜ã™ã‚‹ã ã‘ã®å˜ç´”ãªãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’ä½œæˆã™ã‚‹
 import cv2
 
-# ŽÀso—ˆ‚È‚¢‚Æ‚«‚Í(cd RaspberryPi400‚ÅŠÄŽ‹ƒJƒƒ‰‚ðì‚é)
+# å®Ÿè¡Œå‡ºæ¥ãªã„ã¨ãã¯(cd RaspberryPi400ã§ç›£è¦–ã‚«ãƒ¡ãƒ©ã‚’ä½œã‚‹)
 
 cap = cv2.VideoCapture(0)
 ret, frame = cap.read()
-# ƒpƒX‚ÌŽw’è‚ð³Šm‚É
+# ãƒ‘ã‚¹ã®æŒ‡å®šã‚’æ­£ç¢ºã«
 cv2.imwrite("img/test.jpg", frame)
 cap.release()
